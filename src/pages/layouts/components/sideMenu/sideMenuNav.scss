@@ -1,0 +1,19 @@
+.menuModule{
+    background-color: white;
+    border-top-right-radius: 8px;
+    padding:2px 0px 2px 5px;
+    display: block;
+    width: auto;
+}
+
+.sideSubMenu {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-left: 0px;
+  li ,li a{
+    white-space: nowrap;
+    list-style-type: none;
+    color:white;
+    text-decoration: none;
+  }
+}
