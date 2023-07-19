@@ -7,13 +7,13 @@ import { useEffect, useState } from "react";
 import { storeService } from "../../services/storeService";
 import GenResponse from "../../models/GenResponse";
 import TMenuModel from "../../models/TMenuModel";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/RootReduces";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "../../store/RootReduces";
 
 const ProtectedLayout = () => {
   const [menu, setMenu] = useState<GenResponse<TMenuModel[]>|null>(null);
-  const allMenu = useSelector((state: RootState)=> state.menu);
-  const dispatch = useDispatch();
+  // const allMenu = useSelector((state: RootState)=> state.menu);
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     storeService.menuService.getAllMenu()

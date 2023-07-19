@@ -4,7 +4,7 @@ import FormContainer from "../../components/FormContainer";
 import appRoutes from "../../routes/AppRoutes";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../store/slices/authSlice";
-import { useLoginMutation } from "../../store/slices/apis/usersApiSlice";
+// import { useLoginMutation } from "../../store/slices/apis/usersApiSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../store/RootReduces";
 import { toast } from "react-toastify";
@@ -27,7 +27,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [login, { isLoading }] = useLoginMutation();
+  // const [login, { isLoading }] = useLoginMutation();
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
@@ -61,20 +61,17 @@ const Login = () => {
     try {
       // const res = await login(userLogin).unwrap();
       const resp = await storeService.userService.login(userLogin);
-      debugger
       if(resp && resp.isSuccess && resp.statCode === StatusCode.OK)
       {
           dispatch(
           setCredentials(resp?.result as object as TUserLoginResp)
         );
         toast.success('Sucessfully logged in.');
-        debugger;
         navigate(appRoutes().dashboard.dashboard);
       }else{
         setError(resp.error);
       }
-    } catch (error: any) {
-      debugger;
+    } catch (error: unknown) {
       toast.error(error?.data || error?.data.IsSuccess, {
         autoClose: 1000 * 7,
       });

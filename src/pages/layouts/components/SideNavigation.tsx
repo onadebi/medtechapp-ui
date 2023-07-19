@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./sideBar.scss";
-import { storeService } from "../../../services/storeService";
 import TMenuModel from "../../../models/TMenuModel";
 import SideMenuNav from "./sideMenu/SideMenuNav";
 

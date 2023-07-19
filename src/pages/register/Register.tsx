@@ -7,7 +7,7 @@ import "./register.scss";
 import TUserRegister from "../../models/TUserRegister";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCredentials } from "../../store/slices/authSlice";
 import { useRegisterMutation } from "../../store/slices/apis/usersApiSlice";
 import { StatusCode } from "../../models/GenResponse";
@@ -56,7 +56,7 @@ const Register = () => {
           }
           toast.info(`Registration successful.`);
           navigate(appRoutes().home.home);
-        } catch (error: any) {
+        } catch (error: unknown) {
           toast.error(error?.data?.Error || error?.data?.Message);
         }
       }

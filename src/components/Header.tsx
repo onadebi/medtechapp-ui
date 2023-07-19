@@ -7,12 +7,12 @@ import { RootState } from "../store/RootReduces";
 import { logout } from "../store/slices/authSlice";
 import { FormEvent } from "react";
 import {toast} from 'react-toastify';
-import { useLogoutMutation } from "../store/slices/apis/usersApiSlice";
+// import { useLogoutMutation } from "../store/slices/apis/usersApiSlice";
 import { storeService } from "../services/storeService";
 
 const Header = () => {
   const { userInfo } = useSelector((state: RootState) => state.auth);
-  const [logoutApiCall] = useLogoutMutation();
+  // const [logoutApiCall] = useLogoutMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const Header = () => {
       dispatch(logout());
       toast.success('Successfully logged out',{autoClose: 3000})
       navigate(appRoutes().home.home);
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error(error?.data.Error || error?.data.Message)
     }
   };
