@@ -26,6 +26,7 @@ const Login = () => {
   const submitBtnRef = useRef<HTMLButtonElement>(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   // const [login, { isLoading }] = useLoginMutation();
 
@@ -54,6 +55,7 @@ const Login = () => {
 
   const submitHandler = async (e: FormEvent) => {
     setError(null);
+    setIsLoading(true);
     e.preventDefault();
     if (submitBtnRef.current) {
       submitBtnRef.current.disabled = true;
@@ -77,6 +79,7 @@ const Login = () => {
       });
       setError(error?.data.Error);
     }finally{
+      setIsLoading(false);
       if (submitBtnRef.current) {
         submitBtnRef.current.disabled = false;
       }
